@@ -3,6 +3,7 @@ const computerPlay = () => playActions[Math.floor(Math.random() * playActions.le
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
+const buttons = document.querySelectorAll("button")
 
 
 
@@ -35,35 +36,29 @@ function playRound (playerSelection, computerSelection) {
         computerScore += 1;
         return (`You Lose! Rock beats Scissors.`)
 }}}
-window.onload= function() {
-    function game() {
-        while ((playerScore && computerScore) < 5){
-            document.getElementById("rock-btn").addEventListener("click", () => {
-                playerSelection = "rock";
-                document.getElementById("result").innerText= playRound(playerSelection, computerPlay());
-                document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
-            })
-            document.getElementById("paper-btn").addEventListener("click", () => {
-                playerSelection = "scissors";
-                document.getElementById("result").innerText= playRound(playerSelection, computerPlay());
-                document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
-            })
-            document.getElementById("scissors-btn").addEventListener("click", () => {
-                playerSelection = "scissors";
-                document.getElementById("result").innerText= playRound(playerSelection, computerPlay());
-                document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
-            })
+function disableButtons() {
+    buttons.forEach(button => {
+        button.disabled = true;
+    })
+}
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        console.log("button clicked")
+        document.getElementById("result").innerText = playRound(button.value, computerPlay());
+        document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
         if (playerScore == 5) {
-            document.getElementById("result").innerText= "Congrats! You win!";
-            break
+            document.getElementById("final-result").innerText= "Congrats! You win!";
+            disableButtons();
         } else if (computerScore == 5) {
-            document.getElementById("result").innerText= "Oh no! You lost!";
-            break
-        }
-}
-    }
-game();
-}
+            document.getElementById("final-result").innerText= "Oh no! You lost!";
+            disableButtons();
+            }
+        })
+
+    })
+
+
+
 
 
 

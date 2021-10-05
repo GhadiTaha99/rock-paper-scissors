@@ -6,14 +6,49 @@
 
 body {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #main {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100vh;
 }
-
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid rgba(9, 11, 110, 0.712);
+    background-color: lightcoral;
+}
+#title {
+    text-align: center;
+    color: rgba(9, 11, 110, 0.712);
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-family: "Roboto";
+}
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.options button{
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+.game-text {
+    text-align: center;
+}
 #final-result {
     color: green;
 }
