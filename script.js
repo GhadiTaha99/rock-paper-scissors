@@ -2,7 +2,10 @@ const playActions = ["Rock", "Paper", "Scissors"];
 const computerPlay = () => playActions[Math.floor(Math.random() * playActions.length)];
 let playerScore = 0;
 let computerScore = 0;
-let playerPlay;
+let playerSelection;
+
+
+
 function playRound (playerSelection, computerSelection) {
    if (playerSelection.toLowerCase() == computerSelection.toLowerCase()) {
        return (`It's a tie, you both played ${playerSelection.toLowerCase()}`)
@@ -32,20 +35,36 @@ function playRound (playerSelection, computerSelection) {
         computerScore += 1;
         return (`You Lose! Rock beats Scissors.`)
 }}}
-
-function game() {
-    while ((computerScore && playerScore) < 3) {
-        playerPlay = prompt("Choose Rock, Paper or Scissors: ")
-        console.log(playRound(playerPlay, computerPlay()));
-        console.log(`Player: ${playerScore} -- Computer ${computerScore}`)
-    }
-    if (playerScore == 3) {
-        console.log("Congrats! You win!");
-    } else if (computerScore == 3) {
-        console.log("Oh no! You lost!");
-    }
+window.onload= function() {
+    function game() {
+        while ((playerScore && computerScore) < 5){
+            document.getElementById("rock-btn").addEventListener("click", () => {
+                playerSelection = "rock";
+                document.getElementById("result").innerText= playRound(playerSelection, computerPlay());
+                document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
+            })
+            document.getElementById("paper-btn").addEventListener("click", () => {
+                playerSelection = "scissors";
+                document.getElementById("result").innerText= playRound(playerSelection, computerPlay());
+                document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
+            })
+            document.getElementById("scissors-btn").addEventListener("click", () => {
+                playerSelection = "scissors";
+                document.getElementById("result").innerText= playRound(playerSelection, computerPlay());
+                document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
+            })
+        if (playerScore == 5) {
+            document.getElementById("result").innerText= "Congrats! You win!";
+            break
+        } else if (computerScore == 5) {
+            document.getElementById("result").innerText= "Oh no! You lost!";
+            break
+        }
 }
+    }
 game();
+}
+
 
 
 
