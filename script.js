@@ -43,19 +43,21 @@ function disableButtons() {
 }
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        console.log("button clicked")
-        document.getElementById("result").innerText = playRound(button.value, computerPlay());
-        document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer ${computerScore}`;
-        if (playerScore == 5) {
-            document.getElementById("final-result").innerText= "Congrats! You win!";
-            disableButtons();
-        } else if (computerScore == 5) {
-            document.getElementById("final-result").innerText= "Oh no! You lost!";
-            disableButtons();
-            }
+        if(button.value == "reset"){
+            location.reload();
+        }else{
+            console.log("button clicked")
+            document.getElementById("result").innerText = playRound(button.value, computerPlay());
+            document.getElementById("scoreboard").innerText = `Player: ${playerScore} -- Computer: ${computerScore}`;
+            if (playerScore == 5) {
+                document.getElementById("final-result").innerText= "Congrats! You win!";
+                disableButtons();
+            } else if (computerScore == 5) {
+                document.getElementById("final-result").innerText= "Oh no! You lost!";
+                disableButtons();
+                }
+            }})
         })
-
-    })
 
 
 
