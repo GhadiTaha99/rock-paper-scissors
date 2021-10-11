@@ -72,8 +72,15 @@ body {
     height: 150px;
     border: 5px solid #000000;
 }
-#final-result {
+.win {
     color: green;
+}
+.blue{
+    color: blue;
+}
+.lose,
+.red{
+    color: red;
 }
 #play-again{
     display: flex;
