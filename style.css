@@ -57,6 +57,7 @@ body {
     align-items: center;
     justify-content: center;
     border: 5px solid #000000;
+    background-color: #f0f0f0;
 }
 .options button:hover{
     border: 5px solid red;
@@ -68,9 +69,10 @@ body {
 }
 .game-text {
     text-align: center;
-    width: 1200px;
-    height: 150px;
+    width: 1000px;
+    height: 200px;
     border: 5px solid #000000;
+    background-color: #f0f0f0;
 }
 .win {
     color: green;
@@ -100,6 +102,7 @@ body {
     border: 5px solid #000000;
     font-weight: bold;
     font-size: 20px;
+    background-color: #f0f0f0;
 }
 #reset-btn:hover{
     border: 5px solid red;
